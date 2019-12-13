@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "New Hap";
+}
+@model Wrapper
+<h1>Create an Activity</h1>
+<div class="row">
+    <div class="col-10 offset-1">
+        <form asp-action="createHap" asp-controller="Home" method="post">
+            <span asp-validation-for="haps.Name"></span>
+            <label asp-for="haps.Name"></label>
+            <input class="form-control" asp-for="haps.Name">
+            <br>
+            <span asp-validation-for="haps.Time"></span>
+            <label asp-for="haps.Time"></label>
+            <input class="form-control" type="time" asp-for="haps.Time">
+            <br>
+            <span asp-validation-for="haps.Date"></span>
+            <label asp-for="haps.Date"></label>
+            <input class="form-control" type="date" asp-for="haps.Date">
+            <br>
+            <span asp-validation-for="haps.DurationT"></span>
+            <label asp-for="haps.DurationT"></label>
+            <input class="form-control" asp-for="haps.DurationT">
+            <br>
+            <span asp-validation-for="haps.DurationD"></span>
+            <label asp-for="haps.DurationD"></label>
+            <select asp-for="haps.DurationD" class="form-control">
+                <option value="Minutes">Minutes</option>
+                <option value="Hours">Hours</option>
+                <option value="Days">Days</option>
+            </select>
+            <span asp-validation-for="haps.Desc"></span>
+            <label asp-for="haps.Desc"></label>
+            <input type="textbox" class="form-control" asp-for="haps.Desc">
+            <br>
+            <button class="btn btn-info" value="submit">Create Activity</button>
+        </form>
+    </div>
+</div>

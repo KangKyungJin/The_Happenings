@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Wrapper
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Dojo Activity Center</h1>
+</div>
+<br>
+<div class="row">
+    <div class="col-4 offset-2 text-center">
+        <h2>Register</h2>
+        <form class="text-left" asp-action="RegisterUser" asp-controller="LogReg" method="post">
+            <span asp-validation-for="thisUser.Name"></span>
+            <label asp-for="thisUser.Name"></label>
+            <input class="form-control" asp-for="thisUser.Name">
+            <br>
+            <span asp-validation-for="thisUser.Email"></span>
+            <label asp-for="thisUser.Email"></label>
+            <input class="form-control" asp-for="thisUser.Email">
+            <br>
+            <span asp-validation-for="thisUser.Password"></span>
+            <label asp-for="thisUser.Password"></label>
+            <input class="form-control" asp-for="thisUser.Password">
+            <br>
+            <span asp-validation-for="thisUser.Confirm"></span>
+            <label asp-for="thisUser.Confirm"></label>
+            <input class="form-control" asp-for="thisUser.Confirm">
+            <br>
+            <input class="btn btn-primary" type="submit" value="Register">
+        </form>
+    </div>
+    <div class="col-3 text-center">
+        <h2>Login</h2>
+        <form class="text-left" asp-action="Login" asp-controller="LogReg" method="post">
+            <span asp-validation-for="logUser.Email"></span>
+            <label asp-for="logUser.Email"></label>
+            <input class="form-control" asp-for="logUser.Email">
+            <br>
+            <span asp-validation-for="logUser.Password"></span>
+            <label asp-for="logUser.Password"></label>
+            <input class="form-control" asp-for="logUser.Password">
+            <br>
+            <input class="btn btn-primary" type="submit" value="Log In">
+        </form>
+    </div>
+</div>

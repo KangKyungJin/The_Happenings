@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model Wrapper
+<h1>@Model.haps.Name</h1>
+<div class="row">
+    <div class="col-10 offset-1">
+        <h4>Event Coordinator: @Model.haps.User.Name</h4>
+        <h4>Description:</h4>
+        <p>@Model.haps.Desc</p>
+        <h4>Participants:</h4>
+        <ul>
+            @foreach(var person in Model.haps.Coming){
+                <li>@person.User.Name</li>
+            }
+        </ul>
+    </div>
+</div>
+@if(!Model.haps.Coming.Any(u => u.UserId == Model.thisUser.UserId)){
+    <div class="row">
+        <div class="col-3 offset-9">
+            <a class="btn btn-warning" href="join/@Model.haps.HappeningId">Join</a>
+        </div>
+    </div>
+} else {
+    <div class="row">
+        <div class="col-3 offset-9">
+            <a class="btn btn-warning" href="unjoin/@Model.haps.HappeningId">Unjoin</a>
+        </div>
+    </div>
+}

@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+@model Wrapper
+<div class="row">
+    <div class="col-10 offset-1">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Activity</th>
+                    <th>Date and Time</th>
+                    <th>Duration</th>
+                    <th>Event Coordinator</th>
+                    <th>No. of Participants</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(Happening h in Model.allHaps){
+                    @if(h.Date > DateTime.Now){
+                    <tr>
+                        <td><a href="activity/@h.HappeningId">@h.Name</a></td>
+                        <td>@h.Date.ToString("MM/dd/yyyy") at @h.Time.ToString("h:mm tt")</td>
+                        <td>@h.DurationT @h.DurationD</td>
+                        <td>@h.User.Name</td>
+                        <td>@h.Coming.Count</td>
+                        @if(Model.thisUser.UserId == h.User.UserId){
+                            <td><a href="activity/delete/@h.HappeningId">Delete</a></td>
+                        }else if(@h.Coming.Any(u => u.UserId == Model.thisUser.UserId)){
+                            <td><a href="activity/unjoin/@h.HappeningId">Unjoin</a></td>
+                        }else{
+                            <td><a href="activity/join/@h.HappeningId">Join</a></td>
+                        }
+                        <td></td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-3 offset-9">
+        <a class="btn btn-primary" href="new">Add New Activity</a>
+    </div>
+</div>
