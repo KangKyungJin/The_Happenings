@@ -8,7 +8,7 @@ using CSharpBeltTest.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 
-namespace CSharpBeltTest.Controllers
+namespace TheHappenings.Controllers
 {
     public class HomeController : Controller
     {
